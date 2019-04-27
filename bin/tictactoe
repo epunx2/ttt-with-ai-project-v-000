@@ -1,3 +1,20 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+
+puts "Welcome to Tic Tac Toe!"
+puts "What is your name?"
+name = gets.chomp
+puts "Do you want to play against the computer?"
+humcomp = gets.chomp.downcase
+if humcomp == "no"
+  puts "#{name}, you want to play against another person. What is the name of your opponent?"
+  opponent = gets.chomp
+  game = Game.new
+else
+  puts "#{name} you will play against the computer"
+  game = Game.new(player_1 = Players::Human.new("X"), player_2 = Players::Computer.new("O"), board = Board.new)
+end
+
+game.play
